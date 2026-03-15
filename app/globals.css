@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@theme {
+  --color-lmx-green: #10B981;
+  --color-lmx-green-bright: #34D399;
+  --color-lmx-amber: #F59E0B;
+  --color-lmx-amber-bright: #FCD34D;
+  --color-lmx-surface: #0F172A;
+  --color-lmx-surface-mid: #1E293B;
+  --color-lmx-surface-edge: #334155;
+  --color-lmx-text: #F1F5F9;
+  --color-lmx-text-muted: #94A3B8;
+  --color-lmx-red: #EF4444;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root {
+  --lmx-green: #10B981;
+  --lmx-green-bright: #34D399;
+  --lmx-amber: #F59E0B;
+  --lmx-amber-bright: #FCD34D;
+  --lmx-surface: #0F172A;
+  --lmx-surface-mid: #1E293B;
+  --lmx-surface-edge: #334155;
+  --lmx-text: #F1F5F9;
+  --lmx-text-muted: #94A3B8;
+  --lmx-red: #EF4444;
+}
+
+html {
+  background-color: #0F172A;
+  color: #F1F5F9;
+}
+
+/* Glitch animation keyframes */
+@keyframes glitch-clip-1 {
+  0%, 100% { clip-path: inset(40% 0 61% 0); transform: translate(-4px, 0); }
+  20% { clip-path: inset(92% 0 1% 0); transform: translate(4px, 0); }
+  40% { clip-path: inset(43% 0 1% 0); transform: translate(-2px, 0); }
+  60% { clip-path: inset(25% 0 58% 0); transform: translate(2px, 0); }
+  80% { clip-path: inset(54% 0 7% 0); transform: translate(-4px, 0); }
+}
+
+@keyframes glitch-clip-2 {
+  0%, 100% { clip-path: inset(50% 0 30% 0); transform: translate(4px, 0); }
+  20% { clip-path: inset(10% 0 85% 0); transform: translate(-4px, 0); }
+  40% { clip-path: inset(70% 0 5% 0); transform: translate(2px, 0); }
+  60% { clip-path: inset(5% 0 80% 0); transform: translate(-2px, 0); }
+  80% { clip-path: inset(35% 0 45% 0); transform: translate(4px, 0); }
+}
+
+@keyframes glitch-main {
+  0%, 90%, 100% { transform: translate(0, 0); }
+  91% { transform: translate(-2px, 1px); }
+  93% { transform: translate(2px, -1px); }
+  95% { transform: translate(-1px, 2px); }
+  97% { transform: translate(1px, -2px); }
+}
+
+@keyframes scan-lines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+/* Glitch wordmark */
+.glitch-text {
+  position: relative;
+  animation: glitch-main 5s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: var(--lmx-surface);
+}
+
+.glitch-text::before {
+  color: #ff0066;
+  animation: glitch-clip-1 3s infinite linear;
+  left: 3px;
+}
+
+.glitch-text::after {
+  color: #00ffff;
+  animation: glitch-clip-2 3s infinite linear;
+  left: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch-text,
+  .glitch-text::before,
+  .glitch-text::after {
+    animation: none;
+  }
+  .glitch-text::before,
+  .glitch-text::after {
+    display: none;
+  }
+}
+
+/* Scan lines overlay */
+.scan-lines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.glass-card:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+}
+
+/* Print styles for /tools/spreadsheet report */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  /* Hide everything outside the report */
+  body > *:not(#__next),
+  main > *:not(#lmx-report),
+  section,
+  footer {
+    display: none !important;
+  }
+
+  #lmx-report {
+    display: block !important;
+  }
+
+  .glass-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Ensure text is readable on white */
+  [style*="--lmx-text"] {
+    color: #111111 !important;
+  }
+
+  [style*="--lmx-text-muted"] {
+    color: #64748b !important;
+  }
+}
