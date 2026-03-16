@@ -103,7 +103,7 @@ export default function LandingPage() {
               className="text-xs tracking-[0.35em] uppercase font-display font-semibold"
               style={{ color: "var(--lmx-green)" }}
             >
-              The Football Prediction League
+              The Ultimate Survival Game for Your Mates
             </p>
 
             <h1
@@ -133,18 +133,14 @@ export default function LandingPage() {
               className="text-lg font-display font-medium"
               style={{ color: "var(--lmx-text)" }}
             >
-              Pick once. Win and you survive.
-              <br />
-              Draw or lose — you&apos;re out.
+              It&apos;s the simplest game in the world — until you&apos;ve already used City and Arsenal and you&apos;re forced to pin your hopes on Everton away at Anfield.
             </p>
 
             <p
               className="text-base leading-relaxed max-w-md"
               style={{ color: "var(--lmx-text-muted)" }}
             >
-              The tension builds gameweek by gameweek as players fall. One wrong pick
-              ends your season. Run a league with your mates and let LMX handle
-              everything — picks, deadlines, results, eliminations.
+              Sweat through the 90th minute while your mate&apos;s &quot;banker&quot; pick hits the post. One lapse in judgment and you&apos;re done. Run a league with your mates and let LMX handle everything — picks, deadlines, results, who got sent packing.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mt-1">
@@ -153,7 +149,7 @@ export default function LandingPage() {
                 className="px-8 py-3.5 rounded-lg font-display font-bold text-sm transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95 text-center"
                 style={{ background: "var(--lmx-green)", color: "var(--lmx-surface)" }}
               >
-                Get Started — it&apos;s free
+                Start a League (and take your mates&apos; money)
               </Link>
               <a
                 href="#how-it-works"
@@ -226,12 +222,10 @@ export default function LandingPage() {
               className="font-display font-bold text-2xl md:text-3xl"
               style={{ color: "var(--lmx-text)" }}
             >
-              Still tracking in a spreadsheet?
+              Still chasing your mates for picks on a Friday night?
             </h2>
             <p className="text-base" style={{ color: "var(--lmx-text-muted)" }}>
-              Download our pre-formatted template, fill it in as your league progresses,
-              then upload it for an instant beautified report — standings, pick history,
-              and elimination timeline. No account needed.
+              Delete that messy Excel sheet and let us do the heavy lifting. Upload your existing spreadsheet for an instant standings report — pick history, elimination timeline, the lot. No account needed. Or just start fresh and never touch a spreadsheet again.
             </p>
           </div>
           <Link
@@ -254,15 +248,17 @@ export default function LandingPage() {
             Running a league with your mates?
           </h2>
           <p className="mt-4 text-lg" style={{ color: "var(--lmx-text-muted)" }}>
-            Create a league in under 5 minutes. Fixture data pulls in automatically.
-            Gameweeks are simple time-boxed windows — set a cutoff and go.
+            Create a league in under 5 minutes. Fixture data pulls in automatically. Set a deadline, share a link, and watch your mates agonise over their picks every single gameweek.
+          </p>
+          <p className="mt-3 text-sm" style={{ color: "var(--lmx-text-muted)", opacity: 0.6 }}>
+            Built by people who got knocked out in Week 2 because of a VAR decision.
           </p>
           <Link
             href="/signup?role=manager"
             className="mt-8 inline-block px-8 py-3 rounded-lg font-display font-bold text-base transition-all duration-200 hover:opacity-90"
             style={{ background: "var(--lmx-amber)", color: "var(--lmx-surface)" }}
           >
-            Create a League
+            Start a League (it&apos;s free)
           </Link>
         </div>
       </section>

@@ -20,10 +20,10 @@ export default function CompetitionsShowcase() {
           className="font-display font-bold text-3xl md:text-4xl text-center mb-4"
           style={{ color: "var(--lmx-text)" }}
         >
-          Any League. Any Competition.
+          From the Prem to the Eredivisie — if they&apos;re playing, you&apos;re picking.
         </h2>
         <p className="text-center mb-16" style={{ color: "var(--lmx-text-muted)" }}>
-          Run your league across any competition supported by our football data provider.
+          Run your league across the Premier League, Champions League, or whatever obscure competition your mate insists on using. If the data supports it, LMX supports it.
         </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">

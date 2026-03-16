@@ -1,9 +1,9 @@
 const steps = [
   {
     number: "01",
-    title: "Pick a Team",
+    title: "Burn a Bridge",
     description:
-      "Each gameweek, choose one team you think will win. Simple. One pick per round.",
+      "Choose one team to win this gameweek. Sounds simple — until you remember you can only use each team once all season. Choose wisely. You can't go back.",
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
         <circle cx="16" cy="16" r="14" stroke="#10B981" strokeWidth="2" />
@@ -13,9 +13,9 @@ const steps = [
   },
   {
     number: "02",
-    title: "Survive the Gameweek",
+    title: "Pray for the Clean Sheet",
     description:
-      "If your team wins, you survive. If they draw or lose — you're eliminated. No second chances.",
+      "Win and you're through. Draw or lose — you're sent packing. It doesn't matter that it was a last-minute pen. It doesn't matter that the ref was blind. You're still out.",
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
         <path d="M16 4l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z" stroke="#F59E0B" strokeWidth="2" strokeLinejoin="round" />
@@ -24,9 +24,9 @@ const steps = [
   },
   {
     number: "03",
-    title: "Last One Standing Wins",
+    title: "Claim the Bragging Rights",
     description:
-      "Keep surviving round after round. Every team can only be picked once. The last player standing takes the glory.",
+      "Keep surviving round after round until everyone else has been knocked out. The group chat is yours. The glory is yours. Don't blow it.",
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
         <path d="M8 4h16v14a8 8 0 01-16 0V4z" stroke="#34D399" strokeWidth="2" />
@@ -48,7 +48,7 @@ export default function HowItWorks() {
           How It Works
         </h2>
         <p className="text-center mb-16" style={{ color: "var(--lmx-text-muted)" }}>
-          Three simple steps. One winner.
+          Brutal by design. Three steps. One survivor.
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">
