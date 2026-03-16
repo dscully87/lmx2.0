@@ -11,7 +11,9 @@
   --color-lmx-text: #F1F5F9;
   --color-lmx-text-muted: #94A3B8;
   --color-lmx-red: #EF4444;
+  --color-lmx-red-bright: #FF3333;
 
+  --font-stadium: "Bebas Neue", sans-serif;
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -28,6 +30,7 @@
   --lmx-text: #F1F5F9;
   --lmx-text-muted: #94A3B8;
   --lmx-red: #EF4444;
+  --lmx-red-bright: #FF3333;
 }
 
 html {
@@ -129,7 +132,39 @@ html {
 
 .glass-card:hover {
   border-color: rgba(16, 185, 129, 0.4);
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.15);
+}
+
+/* Elimination card — red tint */
+.glass-card-red {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.glass-card-red:hover {
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 0 24px rgba(239, 68, 68, 0.1);
+}
+
+/* Pulsing green glow for live/survival indicators */
+@keyframes pulse-glow-green {
+  0%, 100% { box-shadow: 0 0 6px rgba(16, 185, 129, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(52, 211, 153, 0.9), 0 0 40px rgba(16, 185, 129, 0.4); }
+}
+
+@keyframes pulse-glow-red {
+  0%, 100% { box-shadow: 0 0 6px rgba(239, 68, 68, 0.4); }
+  50% { box-shadow: 0 0 16px rgba(255, 51, 51, 0.7), 0 0 32px rgba(239, 68, 68, 0.3); }
+}
+
+.live-dot-green {
+  animation: pulse-glow-green 2s ease-in-out infinite;
+}
+
+.live-dot-red {
+  animation: pulse-glow-red 2s ease-in-out infinite;
 }
 
 /* Print styles for /tools/spreadsheet report */

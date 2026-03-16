@@ -107,11 +107,11 @@ export default function LandingPage() {
             </p>
 
             <h1
-              className="font-display font-bold"
               style={{
-                fontSize: "clamp(3.25rem, 8vw, 6.5rem)",
-                lineHeight: 0.92,
-                letterSpacing: "-0.02em",
+                fontFamily: "var(--font-stadium)",
+                fontSize: "clamp(4rem, 10vw, 8.5rem)",
+                lineHeight: 0.88,
+                letterSpacing: "0.02em",
               }}
             >
               <span style={{ color: "var(--lmx-text)" }}>Last Man</span>
@@ -204,6 +204,96 @@ export default function LandingPage() {
 
       {/* How it works */}
       <HowItWorks />
+
+      {/* Death Toll Counter */}
+      <section
+        className="py-16 px-4 border-y"
+        style={{
+          background: "var(--lmx-surface)",
+          borderColor: "var(--lmx-surface-edge)",
+        }}
+      >
+        <div className="max-w-3xl mx-auto text-center">
+          <p
+            className="text-xs uppercase tracking-[0.3em] font-display mb-8"
+            style={{ color: "var(--lmx-text-muted)" }}
+          >
+            Example league · Season 1
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
+            <div className="flex flex-col items-center gap-1.5">
+              <span
+                style={{
+                  fontFamily: "var(--font-stadium)",
+                  fontSize: "clamp(3rem, 8vw, 5rem)",
+                  lineHeight: 1,
+                  color: "var(--lmx-text)",
+                }}
+              >
+                2,847
+              </span>
+              <span
+                className="text-xs font-display uppercase tracking-widest"
+                style={{ color: "var(--lmx-text-muted)" }}
+              >
+                Players entered
+              </span>
+            </div>
+            <div
+              className="text-2xl opacity-20 rotate-90 sm:rotate-0"
+              style={{ color: "var(--lmx-text)" }}
+            >
+              →
+            </div>
+            <div className="flex flex-col items-center gap-1.5">
+              <span
+                style={{
+                  fontFamily: "var(--font-stadium)",
+                  fontSize: "clamp(3rem, 8vw, 5rem)",
+                  lineHeight: 1,
+                  color: "var(--lmx-red)",
+                }}
+              >
+                2,814
+              </span>
+              <span
+                className="text-xs font-display uppercase tracking-widest"
+                style={{ color: "var(--lmx-text-muted)" }}
+              >
+                Sent packing
+              </span>
+            </div>
+            <div
+              className="text-2xl opacity-20 rotate-90 sm:rotate-0"
+              style={{ color: "var(--lmx-text)" }}
+            >
+              →
+            </div>
+            <div className="flex flex-col items-center gap-1.5">
+              <span
+                style={{
+                  fontFamily: "var(--font-stadium)",
+                  fontSize: "clamp(3rem, 8vw, 5rem)",
+                  lineHeight: 1,
+                  color: "var(--lmx-green-bright)",
+                  textShadow: "0 0 20px rgba(52,211,153,0.6)",
+                }}
+              >
+                33
+              </span>
+              <span
+                className="text-xs font-display uppercase tracking-widest"
+                style={{ color: "var(--lmx-text-muted)" }}
+              >
+                Still standing
+              </span>
+            </div>
+          </div>
+          <p className="mt-8 text-sm" style={{ color: "var(--lmx-text-muted)" }}>
+            Your league. Your numbers. Your shot at being the last one left.
+          </p>
+        </div>
+      </section>
 
       {/* Competitions showcase */}
       <CompetitionsShowcase />

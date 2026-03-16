@@ -189,6 +189,18 @@ const phases: Phase[] = [
         description:
           "A global LMX ranking of managers by leagues run, survival rates, and player retention. Bragging rights for the best-run leagues.",
       },
+      {
+        icon: "📡",
+        title: "Live results ticker",
+        description:
+          "A scrolling live feed of scores as they happen — displayed across the platform during matchdays. Eliminations appear in real time. Makes LMX feel plugged in to the weekend's football, not just a database that updates overnight.",
+      },
+      {
+        icon: "💀",
+        title: "Death toll counter",
+        description:
+          "A bold running counter on the landing page: how many players entered, how many have been sent packing, how many still stand. Pure FOMO — makes every new visitor feel the stakes before they've signed up.",
+      },
     ],
   },
   {
