@@ -7,14 +7,14 @@ const VALUES = [
   {
     icon: "🎯",
     bg: "rgba(239,68,68,0.12)",
-    title: "Designed around the drama",
-    body: "Last-man-standing is tense by design. LMX leans into it — live survival counts, nail-biting deadlines, and a final showdown every gameweek.",
+    title: "Unforgiving by design",
+    body: "Last Man Standing is brutal — and that's the point. LMX leans in: live survival counts, nail-biting deadlines, and a final showdown every gameweek. It's better when your season is on the line.",
   },
   {
     icon: "⏱",
     bg: "rgba(16,185,129,0.12)",
-    title: "Save hours every month",
-    body: "No spreadsheets. No chasing WhatsApp confirmations. LMX automates fixture sync, pick deadlines, and elimination — zero admin.",
+    title: "Stop the Friday night chase",
+    body: "No spreadsheets. No chasing your mates for picks on WhatsApp at 11pm. LMX handles deadlines, fixture sync, and eliminations — you just watch the football.",
   },
   {
     icon: "🔗",
@@ -31,8 +31,8 @@ const VALUES = [
   {
     icon: "📊",
     bg: "rgba(245,158,11,0.12)",
-    title: "Full transparency",
-    body: "Every pick is logged, every elimination is auditable. No disputes. The platform is the source of truth — no arguments, just football.",
+    title: "No more 'who-picked-who' rows",
+    body: "Every pick is logged, every knockout is on record. No disputes, no screenshotting WhatsApp threads. The platform is the source of truth — no arguments, just football.",
   },
   {
     icon: "🏆",
