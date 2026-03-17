@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-lmx-green: #10B981;
-  --color-lmx-green-bright: #34D399;
-  --color-lmx-amber: #F59E0B;
-  --color-lmx-amber-bright: #FCD34D;
+  --color-lmx-green: #22C55E;
+  --color-lmx-green-bright: #4ADE80;
+  --color-lmx-yellow: #FACC15;
+  --color-lmx-yellow-bright: #FDE047;
+  --color-lmx-amber: #FACC15;
+  --color-lmx-amber-bright: #FDE047;
   --color-lmx-surface: #0F172A;
   --color-lmx-surface-mid: #1E293B;
   --color-lmx-surface-edge: #334155;
-  --color-lmx-text: #F1F5F9;
+  --color-lmx-text: #E2E8F0;
   --color-lmx-text-muted: #94A3B8;
   --color-lmx-red: #EF4444;
   --color-lmx-red-bright: #FF3333;
@@ -20,14 +22,16 @@
 }
 
 :root {
-  --lmx-green: #10B981;
-  --lmx-green-bright: #34D399;
-  --lmx-amber: #F59E0B;
-  --lmx-amber-bright: #FCD34D;
+  --lmx-green: #22C55E;
+  --lmx-green-bright: #4ADE80;
+  --lmx-yellow: #FACC15;
+  --lmx-yellow-bright: #FDE047;
+  --lmx-amber: #FACC15;
+  --lmx-amber-bright: #FDE047;
   --lmx-surface: #0F172A;
   --lmx-surface-mid: #1E293B;
   --lmx-surface-edge: #334155;
-  --lmx-text: #F1F5F9;
+  --lmx-text: #E2E8F0;
   --lmx-text-muted: #94A3B8;
   --lmx-red: #EF4444;
   --lmx-red-bright: #FF3333;
