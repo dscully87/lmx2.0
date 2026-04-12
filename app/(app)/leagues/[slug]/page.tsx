@@ -76,8 +76,8 @@ export default async function LeaguePage({ params }: Params) {
   // User's own pick
   const myPick = picks.find((p) => p.user_id === user.id);
 
-  const isManager =
-    myMembership?.role === "manager" ||
+  const isOwner =
+    myMembership?.role === "owner" ||
     (await supabase
       .from("profiles")
       .select("role")
@@ -114,7 +114,7 @@ export default async function LeaguePage({ params }: Params) {
         title={league.name}
         subtitle={`Invite code: ${league.invite_code}`}
         action={
-          isManager ? (
+          isOwner ? (
             <Link
               href={`/leagues/${slug}/manage`}
               className="px-4 py-2 rounded-lg font-display font-bold text-xs transition-all hover:opacity-90"
@@ -265,7 +265,7 @@ export default async function LeaguePage({ params }: Params) {
                             <span style={{ color: "var(--lmx-text)" }}>
                               {profile?.display_name ?? "Unknown"}
                             </span>
-                            {m.role === "manager" && (
+                            {m.role === "owner" && (
                               <span
                                 className="text-xs rounded px-1.5 py-0.5 font-display"
                                 style={{
@@ -273,7 +273,7 @@ export default async function LeaguePage({ params }: Params) {
                                   color: "var(--lmx-amber)",
                                 }}
                               >
-                                Manager
+                                Owner
                               </span>
                             )}
                           </div>

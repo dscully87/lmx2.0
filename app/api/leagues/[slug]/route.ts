@@ -27,7 +27,7 @@ export async function PATCH(
     return NextResponse.json({ error: "League not found" }, { status: 404 });
   }
 
-  // Check user is manager of this league or admin
+  // Check user is owner of this league or admin
   const { data: profile } = await supabase
     .from("profiles")
     .select("role")
@@ -41,7 +41,7 @@ export async function PATCH(
     .eq("user_id", user.id)
     .single();
 
-  if (membership?.role !== "manager" && profile?.role !== "admin") {
+  if (membership?.role !== "owner" && profile?.role !== "admin") {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 

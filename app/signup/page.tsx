@@ -5,15 +5,16 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 
-function LoginForm() {
+function SignUpForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectTo = searchParams.get("redirectTo") ?? "/dashboard";
+  const redirectTo = searchParams.get("redirectTo") ?? "/onboarding";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -21,7 +22,13 @@ function LoginForm() {
     setLoading(true);
 
     const supabase = createClient();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: `${window.location.origin}/auth/callback?next=${redirectTo}`,
+      },
+    });
 
     if (error) {
       setError(error.message);
@@ -29,8 +36,8 @@ function LoginForm() {
       return;
     }
 
-    router.push(redirectTo);
-    router.refresh();
+    setSuccess(true);
+    setLoading(false);
   }
 
   async function handleGoogleSignIn() {
@@ -43,16 +50,33 @@ function LoginForm() {
     });
   }
 
+  if (success) {
+    return (
+      <div className="glass-card rounded-xl p-8 text-center">
+        <p
+          className="font-display font-bold text-xl mb-3"
+          style={{ color: "var(--lmx-green)" }}
+        >
+          Check your email
+        </p>
+        <p className="text-sm" style={{ color: "var(--lmx-text-muted)" }}>
+          We&apos;ve sent a confirmation link to <strong>{email}</strong>.
+          Click it to activate your account.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="glass-card rounded-xl p-8">
       <h1
         className="font-display font-bold text-xl mb-1"
         style={{ color: "var(--lmx-text)" }}
       >
-        Sign in
+        Create your account
       </h1>
       <p className="text-sm mb-6" style={{ color: "var(--lmx-text-muted)" }}>
-        Welcome back to LMX.
+        Join LMX and start playing in seconds.
       </p>
 
       {/* Google OAuth */}
@@ -128,8 +152,9 @@ function LoginForm() {
           <input
             id="password"
             type="password"
-            autoComplete="current-password"
+            autoComplete="new-password"
             required
+            minLength={6}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="w-full rounded-lg px-4 py-2.5 text-sm outline-none transition-colors"
@@ -163,14 +188,14 @@ function LoginForm() {
             color: "var(--lmx-surface)",
           }}
         >
-          {loading ? "Signing in..." : "Sign in"}
+          {loading ? "Creating account..." : "Sign up"}
         </button>
       </form>
     </div>
   );
 }
 
-export default function LoginPage() {
+export default function SignUpPage() {
   return (
     <main
       className="min-h-screen flex items-center justify-center px-4"
@@ -194,13 +219,13 @@ export default function LoginPage() {
             </div>
           }
         >
-          <LoginForm />
+          <SignUpForm />
         </Suspense>
 
         <p className="text-center text-sm mt-6" style={{ color: "var(--lmx-text-muted)" }}>
-          No account?{" "}
-          <Link href="/signup" className="underline" style={{ color: "var(--lmx-green)" }}>
-            Sign up
+          Already have an account?{" "}
+          <Link href="/login" className="underline" style={{ color: "var(--lmx-green)" }}>
+            Sign in
           </Link>
         </p>
       </div>

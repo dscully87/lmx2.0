@@ -107,8 +107,7 @@ export default async function DashboardPage() {
     .not("id", "in", memberLeagueIds.length > 0 ? `(${memberLeagueIds.join(",")})` : "(00000000-0000-0000-0000-000000000000)")
     .limit(3);
 
-  const isManagerOrAdmin =
-    profile?.role === "manager" || profile?.role === "admin";
+  const isAdmin = profile?.role === "admin";
   const greeting = getGreeting();
 
   return (
@@ -182,7 +181,7 @@ export default async function DashboardPage() {
                         className="text-xs mt-0.5"
                         style={{ color: "var(--lmx-text-muted)" }}
                       >
-                        {(league.competitions as unknown as { name: string } | null)?.name ?? "—"}
+                        {(league.competitions as unknown as { name: string } | null)?.name ?? "\u2014"}
                       </p>
                     </div>
                     {membership.is_eliminated && (
@@ -217,14 +216,14 @@ export default async function DashboardPage() {
                               className="text-xs font-display font-medium"
                               style={{ color: "var(--lmx-green)" }}
                             >
-                              ✓ Pick submitted
+                              Pick submitted
                             </span>
                           ) : gameweek.status === "open" ? (
                             <span
                               className="text-xs font-display font-medium"
                               style={{ color: "var(--lmx-amber)" }}
                             >
-                              ⚡ Pick needed
+                              Pick needed
                             </span>
                           ) : (
                             <span
@@ -291,7 +290,7 @@ export default async function DashboardPage() {
                     className="text-xs mt-0.5"
                     style={{ color: "var(--lmx-text-muted)" }}
                   >
-                    {(league.competitions as unknown as { name: string } | null)?.name ?? "—"}
+                    {(league.competitions as unknown as { name: string } | null)?.name ?? "\u2014"}
                   </p>
                 </div>
                 <Link
@@ -311,39 +310,27 @@ export default async function DashboardPage() {
         </section>
       )}
 
-      {/* Quick actions for managers */}
-      {isManagerOrAdmin && (
+      {/* Admin quick link */}
+      {isAdmin && (
         <section>
           <h2
             className="font-display font-bold text-lg mb-4"
             style={{ color: "var(--lmx-text)" }}
           >
-            Quick Actions
+            Admin
           </h2>
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/leagues/create"
+              href="/admin"
               className="px-6 py-2.5 rounded-lg font-display font-bold text-sm transition-all hover:opacity-90"
               style={{
-                background: "var(--lmx-amber)",
-                color: "var(--lmx-surface)",
+                background: "var(--lmx-surface-mid)",
+                color: "var(--lmx-text)",
+                border: "1px solid var(--lmx-surface-edge)",
               }}
             >
-              Create League
+              Admin Panel
             </Link>
-            {profile?.role === "admin" && (
-              <Link
-                href="/admin"
-                className="px-6 py-2.5 rounded-lg font-display font-bold text-sm transition-all hover:opacity-90"
-                style={{
-                  background: "var(--lmx-surface-mid)",
-                  color: "var(--lmx-text)",
-                  border: "1px solid var(--lmx-surface-edge)",
-                }}
-              >
-                Admin Panel
-              </Link>
-            )}
           </div>
         </section>
       )}

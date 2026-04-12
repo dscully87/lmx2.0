@@ -113,7 +113,7 @@ export default function SpreadsheetToolPage() {
             players can join with a single link. No spreadsheets required.
           </p>
           <a
-            href="/signup?role=manager"
+            href="/signup"
             className="inline-block px-8 py-3 rounded-lg font-display font-bold text-sm transition-all hover:opacity-90"
             style={{ background: "var(--lmx-amber)", color: "var(--lmx-surface)" }}
           >

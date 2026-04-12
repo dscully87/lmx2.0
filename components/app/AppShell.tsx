@@ -11,14 +11,11 @@ interface AppShellProps {
 export function AppShell({ profile, children }: AppShellProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const isManagerOrAdmin = profile.role === "manager" || profile.role === "admin";
   const isAdmin = profile.role === "admin";
 
   const navLinks = [
     { label: "Dashboard", href: "/dashboard" },
-    ...(isManagerOrAdmin
-      ? [{ label: "Create League", href: "/leagues/create" }]
-      : []),
+    { label: "Create League", href: "/leagues/create" },
     ...(isAdmin ? [{ label: "Admin", href: "/admin" }] : []),
   ];
 

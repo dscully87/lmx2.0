@@ -77,7 +77,7 @@ const phases: Phase[] = [
         icon: "🔐",
         title: "Auth & onboarding",
         description:
-          "Sign up as a manager or player, verify your email, and land in the right place first time. Magic-link login so nobody forgets their password.",
+          "Sign up with email or Google, verify once, and land in the right place first time. One-click onboarding so you're playing within seconds.",
       },
       {
         icon: "🏆",
@@ -89,25 +89,25 @@ const phases: Phase[] = [
         icon: "✅",
         title: "Pick submission",
         description:
-          "Players pick a team before the gameweek deadline. Picks are locked at cutoff, visible to the manager, and logged permanently. No disputes, no ambiguity.",
+          "Pick a team before the gameweek deadline. Picks are locked at cutoff, visible to the league owner, and logged permanently. No disputes, no ambiguity.",
       },
       {
         icon: "💀",
         title: "Automatic eliminations",
         description:
-          "The moment a result comes in, picks are evaluated and eliminations processed. No manual work for the manager — the platform handles it all.",
+          "The moment a result comes in, picks are evaluated and eliminations processed. No manual work for anyone — the platform handles it all.",
       },
       {
         icon: "📋",
-        title: "Manager dashboard",
+        title: "League dashboard",
         description:
           "Full league overview: who's in, who's out, current gameweek status, pick deadline countdown, and a one-click view of every player's pick history.",
       },
       {
         icon: "🙋",
-        title: "Player dashboard",
+        title: "Personal dashboard",
         description:
-          "Every player gets their own view — survival status, teams already picked, current standings, and a clear prompt to make their pick before the deadline.",
+          "Every user gets their own view — survival status, teams already picked, current standings, and a clear prompt to make their pick before the deadline.",
       },
     ],
   },
@@ -126,13 +126,13 @@ const phases: Phase[] = [
         icon: "🔔",
         title: "Pick deadline reminders",
         description:
-          "Email nudges sent 24h and 2h before each gameweek locks. No player gets eliminated because they forgot to pick. Managers can configure when reminders go out.",
+          "Email nudges sent 24h and 2h before each gameweek locks. No player gets eliminated because they forgot to pick. League owners can configure when reminders go out.",
       },
       {
         icon: "🤖",
         title: "Auto-pick safety net",
         description:
-          "Missed the deadline? LMX auto-assigns the most available team rather than eliminating a player for forgetting. Managers can toggle this per league.",
+          "Missed the deadline? LMX auto-assigns the most available team rather than eliminating a player for forgetting. League owners can toggle this per league.",
       },
       {
         icon: "🔗",
@@ -181,13 +181,13 @@ const phases: Phase[] = [
         icon: "🎯",
         title: "Wildcard round",
         description:
-          "Managers can configure a wildcard gameweek — eliminated players get one shot back in. A deliberate drama mechanism. Use it once, use it wisely.",
+          "League owners can configure a wildcard gameweek — eliminated players get one shot back in. A deliberate drama mechanism. Use it once, use it wisely.",
       },
       {
         icon: "🏅",
         title: "Public leaderboards",
         description:
-          "A global LMX ranking of managers by leagues run, survival rates, and player retention. Bragging rights for the best-run leagues.",
+          "A global LMX ranking of league creators by leagues run, survival rates, and player retention. Bragging rights for the best-run leagues.",
       },
       {
         icon: "📡",
@@ -380,7 +380,7 @@ export default function RoadmapPage() {
           Something missing?
         </h2>
         <p className="text-base max-w-md mx-auto mb-8" style={{ color: "var(--lmx-text-muted)" }}>
-          We build for managers who run real leagues with real mates. If there&apos;s a feature
+          We build for people who run real leagues with real mates. If there&apos;s a feature
           that would make your life easier, we want to hear about it.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -392,7 +392,7 @@ export default function RoadmapPage() {
             Share an idea
           </a>
           <Link
-            href="/signup?role=manager"
+            href="/signup"
             className="px-7 py-3 rounded-lg font-display font-bold text-sm border transition-all hover:opacity-80"
             style={{ borderColor: "var(--lmx-surface-edge)", color: "var(--lmx-text)" }}
           >
