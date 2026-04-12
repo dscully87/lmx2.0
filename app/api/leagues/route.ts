@@ -12,16 +12,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-
-  if (!profile || (profile.role !== "manager" && profile.role !== "admin")) {
-    return NextResponse.json({ error: "Only managers can create leagues" }, { status: 403 });
-  }
-
   const body = await request.json() as {
     name: string;
     competition_id: string;
@@ -59,11 +49,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: leagueError?.message ?? "Failed to create league" }, { status: 500 });
   }
 
-  // Insert manager membership
+  // Insert owner membership
   const { error: memberError } = await supabase.from("league_memberships").insert({
     league_id: league.id,
     user_id: user.id,
-    role: "manager",
+    role: "owner",
     is_eliminated: false,
   });
 

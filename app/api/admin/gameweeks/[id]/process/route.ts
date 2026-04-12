@@ -1,13 +1,12 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { createAdminClient } from "@/lib/supabase/admin";
 import { syncGameweekResults } from "@/lib/gameweek/sync-results";
 import { processGameweek } from "@/lib/gameweek/process";
 
 /**
  * POST /api/admin/gameweeks/[id]/process
  *
- * Manual trigger for admins and league managers.
+ * Manual trigger for admins only.
  * Syncs the latest fixture results from the football API then processes the gameweek.
  *
  * Query params:
@@ -21,7 +20,7 @@ export async function POST(
   const { searchParams } = new URL(request.url);
   const force = searchParams.get("force") === "true";
 
-  // ── Auth: must be admin or a manager of a league in this competition ─────────
+  // ── Auth: admin only ──────────────────────────────────────────────────────
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -35,46 +34,8 @@ export async function POST(
     .eq("id", user.id)
     .single();
 
-  const isAdmin = profile?.role === "admin";
-  const isManager = profile?.role === "manager";
-
-  if (!isAdmin && !isManager) {
-    return NextResponse.json({ error: "Admin or manager access required" }, { status: 403 });
-  }
-
-  // If manager, verify they manage a league in this gameweek's competition
-  if (!isAdmin) {
-    const admin = createAdminClient();
-
-    const { data: gameweek } = await admin
-      .from("gameweeks")
-      .select("competition_id")
-      .eq("id", gameweekId)
-      .single();
-
-    if (!gameweek) {
-      return NextResponse.json({ error: "Gameweek not found" }, { status: 404 });
-    }
-
-    const { data: managedLeague } = await supabase
-      .from("leagues")
-      .select("id")
-      .eq("competition_id", gameweek.competition_id)
-      .limit(1)
-      .single();
-
-    // Check via membership since leagues are manager-created
-    const { data: managership } = await supabase
-      .from("league_memberships")
-      .select("id")
-      .eq("user_id", user.id)
-      .eq("role", "manager")
-      .eq("league_id", managedLeague?.id ?? "")
-      .single();
-
-    if (!managership) {
-      return NextResponse.json({ error: "You do not manage a league in this competition" }, { status: 403 });
-    }
+  if (profile?.role !== "admin") {
+    return NextResponse.json({ error: "Admin access required" }, { status: 403 });
   }
 
   // ── Sync latest results from football API ─────────────────────────────────

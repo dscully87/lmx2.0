@@ -32,7 +32,7 @@ export default async function ManagePage({ params }: Params) {
 
   if (!league) notFound();
 
-  // Check user is league manager or admin
+  // Check user is league owner or admin
   const { data: membership } = await supabase
     .from("league_memberships")
     .select("id, role")
@@ -41,7 +41,7 @@ export default async function ManagePage({ params }: Params) {
     .single();
 
   const canManage =
-    membership?.role === "manager" || profile?.role === "admin";
+    membership?.role === "owner" || profile?.role === "admin";
 
   if (!canManage) {
     redirect(`/leagues/${slug}`);
@@ -207,7 +207,7 @@ export default async function ManagePage({ params }: Params) {
                       <td className="px-4 py-3" style={{ color: "var(--lmx-text)" }}>
                         <div className="flex items-center gap-2">
                           {profile?.display_name ?? "Unknown"}
-                          {m.role === "manager" && (
+                          {m.role === "owner" && (
                             <span
                               className="text-xs rounded px-1.5 py-0.5 font-display"
                               style={{
@@ -215,7 +215,7 @@ export default async function ManagePage({ params }: Params) {
                                 color: "var(--lmx-amber)",
                               }}
                             >
-                              Manager
+                              Owner
                             </span>
                           )}
                         </div>

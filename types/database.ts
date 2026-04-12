@@ -5,8 +5,8 @@ export type GameweekStatus =
   | "processing"
   | "complete";
 
-export type UserRole = "player" | "manager" | "admin";
-export type LeagueMemberRole = "manager" | "player";
+export type UserRole = "user" | "admin";
+export type LeagueMemberRole = "owner" | "member";
 export type PickStatus = "pending" | "survived" | "eliminated" | "auto";
 
 export type Profile = {

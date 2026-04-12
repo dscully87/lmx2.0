@@ -39,7 +39,8 @@ export async function updateSession(request: NextRequest) {
   // Protect authenticated routes
   const isAuthPage =
     request.nextUrl.pathname.startsWith("/login") ||
-    request.nextUrl.pathname.startsWith("/signup");
+    request.nextUrl.pathname.startsWith("/signup") ||
+    request.nextUrl.pathname.startsWith("/auth/callback");
 
   const isProtectedRoute =
     request.nextUrl.pathname.startsWith("/dashboard") ||
